@@ -1,0 +1,21 @@
+###### Section 7 - Introduction to JPA | Step 07 - Using a Command Line to Save User to DB
+
+After defining all of the things in the previous step, we'd want to call this DAO service in some place. One of the things
+that we've already setup is a simple project which launches up a spring context. As this project is created using Spring Boot
+and Spring Boot Starter, this is already starting something called the spring context. At the launch of the Spring Context,
+we'd want to insert a user in. How do we do that? Theres's a concept called Command Line Runner. This command line runners
+are typically executed when the spring context launches up i.e. when the application starts up. So, let's create a simple
+command line runner.
+
+New class -> UserDaoServiceCommandLineRunner
+For this class to be managed by Spring -> @Component
+To make it a command line runner -> implements a interface -> UserDaoServiceCommandLineRunner implements CommandLineRunner
+To save the user to the DB -> implement the run method with the required logic
+
+Let's use logger to log the id of the created user.
+
+After all this, now when we re-start the application, we can see in the logs
+-> New User is Created : User{id=1, name='Jack', role='Admin'}
+
+The thing which we need to understand here is the fact that we haven't created a DB yet. How is this magic happening?
+Where is this data getting stored? Where is the database present? We'll see about this in the next step.

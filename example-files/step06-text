@@ -11,7 +11,6 @@ With this entityManager, we'll be able to save data in the database.
 
 Entity Manager provides methods -
 1. entityManager.persist : to save data in the database.
-2.
 
 This userDAOService/userDAOInterface is something that helps us to store things in the database. In spring we call that
 kind of component as Repository. Hence we put @Repository annotation to that class. Repository indicates something which
