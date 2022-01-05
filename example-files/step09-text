@@ -1,0 +1,24 @@
+###### Section 7 - Introduction to JPA | Step 09 - Introduction to Spring Data JPA
+
+In the last few steps, we created an entity user and we started managing it with user DAO service. Let's say we want to create
+another entity. What I would need to do in that kind of a situation is to manage it, I would again go and create another DAO
+service and again I will have to define repeated methods. Spring Data wants to solve this problem. What Spring data says that
+you just define your interfaces, you define your repository interfaces and it will take care of implementing them. So if we
+just one to do a user DAO service, instead of that we can create a simple with a small method in the interface and Spring data
+says it will provide the implementation for us. It'll be able to talk to the entity manager and will do what we want.
+
+The specific implementation or the specific module for the JPA is spring Data JPA. Let's now use JPA to create a simple
+repository. All that we need to do is, create an interface type class and extend it to JpaRepository, we won't have to
+provide any implementation. The implementation will be provided by Spring data JPA. When we are extending our interface
+type class to JpaRepository, we need to provide what is the entity that we'd want to manage and the datatype of primary key
+of the entity to JpaRepository<entity, primary key type>.
+--> public interface UserRepository extends JpaRepository<User, Long>
+This is all we need to be able to create a repository. We want to use this repository from our command line runner.
+
+One thing about userRepository is if you want to update/save, you'll have to use the same method -> userRepository.save()
+Let's now run the application and see what happens.
+
+Note: Instead of writing lot of DAO services / logic like in the previous step, Spring Data JPA provides a common abstraction
+called JPA Repository.
+
+
