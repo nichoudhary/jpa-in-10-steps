@@ -1,0 +1,13 @@
+###### Section 7 - Introduction to JPA | Step 10 - More JPA Repository: findById and findAll
+
+Spring Data JPA makes it easy to manage all your entities. Once you've defined your entities and defined the mapping to the
+database. That's it! Spring data repository would provide a lot of useful methods to manage them. Let's look into other
+methods provided by JPA (we have already looked into userRepository.save)
+
+1. userRepository.findById(Long ID) -> This returns an optional<T> from DB matching the id
+2. userRepository.findAll() -> This returns all the present list from DB
+
+There are a lot of other methods which we can play around with.
+
+
+
