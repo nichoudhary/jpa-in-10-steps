@@ -1,0 +1,44 @@
+###### Section 7 - Introduction to JPA | Step 06 - Defining Service to manage the EntityUserService and EntityManager
+
+In the last step, we defined a simple entity. Now we'd want to be able to save this entity to the database. For this we'll
+use entity manager. To be able to save this user entity to the database, we'll create something called a
+user service -> UserDAOService. We are creating this DAO service in the sense that it's a Data Access Object which will help
+us access data from database.
+
+In this UserDAOService class, we'd want to be able to manage user entity. We'd be able to be save users and retrieve users
+from the database. One thing we need to do to get the values from the database is to create an instance of entity manager.
+With this entityManager, we'll be able to save data in the database.
+
+Entity Manager provides methods -
+1. entityManager.persist : to save data in the database.
+2.
+
+This userDAOService/userDAOInterface is something that helps us to store things in the database. In spring we call that
+kind of component as Repository. Hence we put @Repository annotation to that class. Repository indicates something which
+interacts with the database.
+The other thing is when we want to insert, we want to modify something to the database, we need to be inside a transaction.
+What we need to do is we need to be able to something like open transaction here. Open transaction, make the change (whatever
+change we need to do) and then close the transaction.
+
+    public long insert(User user) {
+        //open transaction
+        //make the change
+        entityManager.persist(user);
+        //close the transaction
+        return user.getId();
+    }
+
+Instead of implementing transaction management in each method, what JPA provides is a simple interface to do declarative
+transaction. We can do that by using @Transactional annotation in our DAOService class. We can use this annotation directly
+at class level or at the method level as well. @Transactional on a class level says every method would be involved in a
+transaction.
+
+The other important thing we need to understand is the concept of persistence context and how it relates with the entity
+manager. Entity manager is actually an interface to the persistence context. When we say entityManager.persist(someObject),
+what it does is, it saves it to the database and also starts tracking it in the persistence context. So, "someObject" is
+now inside the persistence context. So, whatever changes now we'll make to "someObject", it will be tracked in the persistence
+context. Important thing to understand is, entity manager only tracks those objects which are persisted
+persisted through it -> entityManager.persist(someObject).
+
+So, we need to put an annotation to entityManager to autowire it with persistent context. -> @PersistentContext
+
