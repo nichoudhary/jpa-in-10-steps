@@ -1,0 +1,15 @@
+###### Section 7 - Introduction to JPA | Step 05 - Defining a JPA Entity (User)
+
+In this step, we will focus on creating a simple entity. What we want to do is create an entity called user.
+One of the things that JPA expects in a class is the default constructor.
+
+Now, I'd want to take this User bean/object/class and store it in a table to USER in the DB. So, I'd actually take the data
+from the user and be able to map it to a table. How would I do that? To start with this, I'd have to make this an entity.
+If I want to be able to store this user to a table then what we need to do is we'd need to define an annotation
+@Entity [javax.persistence]. javax.persistence is the package where java persistence API annotations are present.
+
+@Id - for primary key
+@GeneratedValue - we do not want to assign values by ourselves, application will auto-generate it.
+
+Once we have created an entity, we'd need to be able to save this to a database. How do we store entities to database and
+get them from the database? The way we'd do that is by using something called entity manager.
