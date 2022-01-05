@@ -1,0 +1,46 @@
+###### Section 7 - Introduction to JPA | Step 08 - Magic of Spring Boot and in Memory Database H2
+
+Where is the database created?
+-> In memory - Using H2
+
+What schema is used to create the tables?
+-> Created based on the entities defined
+
+Where are the tables created?
+-> Created based on the entities defined
+-> In Memory - Using H2
+
+Can I see the data in the database?
+-> http://localhost:8080/h2-console
+-> Use db url jdbc:h2:mem:testdb
+
+Where is Hibernate coming from?
+-> Through Spring Data-JPA starter
+
+How is a datasource created?
+-> Through spring boot auto configuration
+
+Typically we use databases like MySQL, Oracle. For all those kind of databases, we need to first install them on our machine
+then create the tables and then we'll be able to save the data from the application. This would mean that there is a lot of
+setup involved. Other kind of databases, called in-memory databases. These in-memory databases are directly created inside
+the application. The schemas are defined, the tables are created, the data is populated. And once the application stops, the
+entire database is destroyed and removed from memory. The great thing about these databases is we don't really need to maintain
+them. We don't have to install manually and create tables and all that kind of stuff.
+
+we want to see the sql that is generated and want to enable something called h2 console. In application.properties file :
+-> spring.jpa.show-sql=true
+-> spring.h2.console.enabled=true
+
+Restart application, check the logs to see the SQL generated and go to the below url to play around with H2 :
+-> http://localhost:8080/h2-console -> Use db url jdbc:h2:mem:testdb
+
+This "jdbc:h2:mem:testdb" won't work as with the latest spring boot version the db url gets randomly generated in the logs
+each time you start the application. You can fix this by adding constant db url in application.properties file.
+-> spring.datasource.url=jdbc:h2:mem:testdb
+
+To be able to understand spring boot auto configuration much more we'll turn on debug logging in application.properties.
+-> logging.level.org.springframework=debug
+
+Now we can see Auto Configuration Report in the logs.
+
+
